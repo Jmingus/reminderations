@@ -1,2 +1,26 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+
+<% if user_signed_in? %>
+<div class="modal">
+  <label for="modal-1">
+    <div class="modal-trigger">Create a Reminderation</div>
+  </label>
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal-window">
+    <div class="modal-inner">
+      <label class="modal-close" for="modal-1"></label>
+      <h1>New Reminderation Form</h1>
+      <p class="modal-intro"><%= render partial: 'reminders/form' %></p>
+      <p class="modal-content"></p>
+
+    </div>
+  </div>
+</div>
+
+<% current_user.reminders.each do |reminder| %>
+		<%= reminder.title %>
+		<%= reminder.description %>
+		<%= reminder.priority %>
+		<% end %>
+<% else %>
+
+<% end %>
